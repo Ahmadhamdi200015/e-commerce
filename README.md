@@ -1,45 +1,87 @@
-usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           [--config-env=<name>=<envvar>] <command> [<args>]
+# 🛒 E-Commerce App (Flutter + Laravel)
 
-These are common Git commands used in various situations:
+A full-featured e-commerce mobile application built with **Flutter** and a **Laravel** REST API. It covers the complete shopping journey: browsing products, cart, favorites, discount coupons, secure **Stripe** payments, and live order tracking. It is connected to a companion **Delivery app**, so every order placed by a customer reaches a driver and can be followed in real time.
 
-start a working area (see also: git help tutorial)
-   clone     Clone a repository into a new directory
-   init      Create an empty Git repository or reinitialize an existing one
 
-work on the current change (see also: git help everyday)
-   add       Add file contents to the index
-   mv        Move or rename a file, a directory, or a symlink
-   restore   Restore working tree files
-   rm        Remove files from the working tree and from the index
+## ✨ Features
 
-examine the history and state (see also: git help revisions)
-   bisect    Use binary search to find the commit that introduced a bug
-   diff      Show changes between commits, commit and working tree, etc
-   grep      Print lines matching a pattern
-   log       Show commit logs
-   show      Show various types of objects
-   status    Show the working tree status
+**Shopping experience**
+- Browse products by categories, with search
+- Product details with images, description, and pricing
+- Add to cart, update quantities, and remove items
+- Favorites (wishlist) to save products for later
+- Discount coupons applied at checkout, with the total updated instantly
 
-grow, mark and tweak your common history
-   branch    List, create, or delete branches
-   commit    Record changes to the repository
-   merge     Join two or more development histories together
-   rebase    Reapply commits on top of another base tip
-   reset     Reset current HEAD to the specified state
-   switch    Switch branches
-   tag       Create, list, delete or verify a tag object signed with GPG
+**Payments**
+- Secure card payments with **Stripe**
+- Handling of successful, failed, and cancelled payments
 
-collaborate (see also: git help workflows)
-   fetch     Download objects and refs from another repository
-   pull      Fetch from and integrate with another repository or a local branch
-   push      Update remote refs along with associated objects
+**Orders & tracking**
+- Order summary and confirmation
+- Live order tracking powered by Firebase
+- Order history
 
-'git help -a' and 'git help -g' list available subcommands and some
-concept guides. See 'git help <command>' or 'git help <concept>'
-to read about a specific subcommand or concept.
-See 'git help git' for an overview of the system.
-"# market" 
+**Delivery integration**
+- Connected to the companion [Delivery app](https://github.com/Ahmadhamdi200015/delivery): new orders are sent to drivers, and status updates flow back to the customer
+
+**Notifications**
+- Push notifications for order updates and offers (Firebase Cloud Messaging)
+
+## 🔄 Purchase Flow
+Browse → Add to Cart / Favorites → Apply Coupon → Checkout (Stripe)
+→ Order Confirmed → Driver Assigned (Delivery App) → Live Tracking → Delivered
+
+
+
+## 🛠 Tech Stack
+
+| Area | Technology |
+|------|------------|
+| Mobile app | Flutter / Dart |
+| State management & routing | GetX (Bindings, Controllers, Named Routes) |
+| Backend & database | Laravel REST API |
+| Payments | Stripe |
+| Live tracking & push notifications | Firebase (Cloud Messaging + [Firestore / Realtime Database]) |
+
+## 🗂 Project Structure
+lib/
+├── binding/ # GetX dependency bindings
+├── controller/ # GetX controllers (app logic and state)
+├── core/ # constants, helpers, shared utilities
+├── data/
+│ ├── datasource/ # API calls to the Laravel backend
+│ └── model/ # data models
+├── view/
+│ ├── screen/ # app screens
+│ └── widget/ # reusable widgets
+├── applink.dart # API endpoints
+├── firebase_options.dart
+├── main.dart
+└── routes.dart
+
+## 🚀 Getting Started
+
+1. Clone the repository
+```bash
+   git clone https://github.com/Ahmadhamdi200015/e-commerce.git
+   cd e-commerce
+```
+2. Install dependencies
+```bash
+   flutter pub get
+```
+3. Set the API base URL of your Laravel backend in `lib/applink.dart`
+4. Add your own Firebase config (`google-services.json` / `GoogleService-Info.plist`) for tracking and notifications
+5. Add your Stripe **test** publishable key
+6. Run the app
+```bash
+   flutter run
+```
+
+> Use Stripe test mode with the test card `4242 4242 4242 4242`.
+
+## 👤 Author
+
+**Ahmad Elkahlout**, Flutter Developer
+Available for freelance work on [Upwork](#) and [Mostaql](#)
+📧 elkahloutahmad5@gmail.com
